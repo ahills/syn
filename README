@@ -1,0 +1,21 @@
+Usage: syn < infile > outfile
+
+Executes shells commands inside {{ and }} delimiters (configurable: set
+delim_open and delim_close in config.h) and substitutes their output.
+Currently, expressions to be evaluated are limited to BUFSIZ characters.
+
+To build:
+$ make test
+To install to $(PREFIX) (in config.mk):
+$ make install
+
+To build on systems, like Mac OS X, which forbid static compilation, clear
+LDFLAGS in config.mk or build with the command:
+$ make LDFLAGS=
+
+Unavoidably, templates can be evaluated within one another by making calls to
+the program within the delimiters. Exercise caution here; no protection from
+recursive execution until you hit your process limit is provided.
+
+Please report bugs to Andrew Hills <ahills@ednos.net>.
+

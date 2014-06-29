@@ -1,0 +1,12 @@
+{{ head -n 1 test.in }}
+They call me {{printf Juan}} / They call me {{printf José}}
+
+Directory contents:
+{{ ls -A }}
+
+Setting environment variable: {{export VAR=value; printf VAR=$VAR}}
+Retrieving environment variable: {{printf VAR=$VAR}}
+{{ printf "$USER lives at $HOME" }}
+
+{{ false }}
+
