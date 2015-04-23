@@ -3,12 +3,7 @@ include config.mk
 .POSIX:
 .SUFFIXES: .c .o
 
-SRC = syn.c
-
-OBJ = $(SRC:.c=.o)
-BIN = $(SRC:.c=)
-
-all: options bin
+all: options syn
 
 options:
 	@echo $(PROGNAME) build options:
@@ -16,21 +11,11 @@ options:
 	@echo "LDFLAGS 	= $(LDFLAGS)"
 	@echo "CC      	= $(CC)"
 
-bin: $(BIN)
-
-$(OBJ): config.h config.mk
+syn: syn.c config.h
 
 config.h:
 	@echo creating $@ from config.def.h
 	@cp config.def.h $@
-
-.o:
-	@echo LD $@
-	@$(LD) -o $@ $< $(LDFLAGS)
-
-.c.o:
-	@echo CC $<
-	@$(CC) -c -o $@ $< $(CFLAGS)
 
 dist: clean
 	@echo creating dist tarball
