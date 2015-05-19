@@ -41,9 +41,3 @@ clean:
 	@echo cleaning
 	@rm -f $(PROGNAME) $(BIN) $(OBJ) $(PROGNAME)-$(VERSION).tar.xz
 
-test: $(PROGNAME)
-	@bash -c 'echo -e "\e[32minput:\e[0m"; \
-		cat test.in; \
-		echo -e "\e[32moutput:\e[0m"; \
-		./$(PROGNAME) < test.in' && false || echo 'Test passed'
-
