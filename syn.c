@@ -190,13 +190,13 @@ eval(char *buf)
     int ret;
     char *cmd = buf;
 #ifdef WRAP_CMD
-    const char *const bash_front = WRAP_CMD " \"";
-    const char *const bash_rear  = "\"";
-    cmd = calloc(strlen(buf) + strlen(bash_front) + strlen(bash_rear) + 1,
+    const char *const wrap_front = WRAP_CMD " \"";
+    const char *const wrap_rear  = "\"";
+    cmd = calloc(strlen(buf) + strlen(wrap_front) + strlen(wrap_rear) + 1,
                  sizeof *cmd);
-    strcat(cmd, bash_front);
+    strcat(cmd, wrap_front);
     strcat(cmd, buf);
-    strcat(cmd, bash_rear);
+    strcat(cmd, wrap_rear);
     D("constructed command: '%s'\n", cmd);
 #endif
     fflush(stdout);
